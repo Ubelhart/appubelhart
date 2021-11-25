@@ -1,9 +1,11 @@
 import React from "react";
+import CartWidget from "../CartWidget/CartWidget";
 
 const NavBar = () => {
   return (
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
+        <CartWidget />
         <a class="navbar-brand" href="/#">
           E-Commerce
         </a>
@@ -18,6 +20,7 @@ const NavBar = () => {
         >
           <span class="navbar-toggler-icon"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
