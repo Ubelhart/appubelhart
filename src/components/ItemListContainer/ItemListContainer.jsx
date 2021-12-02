@@ -1,16 +1,27 @@
 import "./style.scss";
-import React from "react";
-import ItemCount from "../ItemCount/ItemCount";
+import React, { useEffect, useState } from "react";
+import { getProducts } from "../../products";
+import ItemList from "../ItemList/ItemList";
 
 const ItemListContainer = (props) => {
-  const onAdd = () => alert("Agregado al Carrito");
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const list = getProducts();
+    list.then((list) => {
+      setProducts(list);
+    });
+
+    return () => {
+      setProducts([]);
+    };
+  }, []);
+
   return (
     <>
       <h2>Aca van a ir todos los productos de mi {props.greeting}.</h2>
       <div className="products">
-        <ItemCount product="Camisa Tigre" stock="10" onAdd={onAdd} />
-        <ItemCount product="Camisa Relampago" stock="7" onAdd={onAdd} />
-        <ItemCount product="Camisa Fuego" stock="5" onAdd={onAdd} />
+        <ItemList products={products} />
       </div>
     </>
   );
