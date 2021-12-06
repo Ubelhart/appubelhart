@@ -1,4 +1,3 @@
-import "./style.scss";
 import React, { useEffect, useState } from "react";
 import { getProducts } from "../../products";
 import ItemList from "../ItemList/ItemList";
@@ -20,7 +19,7 @@ const ItemListContainer = (props) => {
   return (
     <>
       <h2>Aca van a ir todos los productos de mi {props.greeting}.</h2>
-      <div className="products">
+      <div>
         <ItemList products={products} />
       </div>
     </>
