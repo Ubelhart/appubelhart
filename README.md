@@ -32,4 +32,17 @@
   <li>v0.5: Agregando promesa</li>
   <li>v0.6: Agregando detalle a un producto</li>
   <li>v0.7: Agregrado routing y preparando para la primera entrega</li>
+  <li>v0.71: Subiendo gifs al readme</li>
+</ul>
+
+<h2>DEMOSTRACIÓN</h2>
+<ul>
+  <li>Parte 1</li>
+  <br />
+  <img src="./public/gif/sampleOne.gif" alt="" />
+  <br />
+  <br />
+  <li>Parte 2</li>
+  <br />
+  <img src="./public/gif/sampleTwo.gif" alt="" />
 </ul>
