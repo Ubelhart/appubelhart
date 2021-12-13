@@ -1,70 +1,35 @@
-# Getting Started with Create React App
+<h1>BIENVENIDOS A TIENDA DE ROPA</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p>Hice esta pagina para el curso de React de CoderHouse.</p>
 
-## Available Scripts
+<h2>AUTOR</h2>
+<p>Juan Pablo Ubelhart</p>
 
-In the project directory, you can run:
+<h2>CONSTRUIDO CON</h2>
+<ul>
+  <li>HTML</li>
+  <li>SASS</li>
+  <li>BOOTSTRAP</li>
+  <li>JAVASCRIPT</li>
+  <li>React</li>
+</ul>
 
-### `npm start`
+<h2>DESCRIPCIÓN</h2>
+<p>
+  Elegi hacer un E-commerce porque es lo que mas se hace, asi queria aprender a
+  hacerlo con React, agregue las dependencias de bootstrap y node-sass para
+  darle un poco de estilo, aunque por ahora casi no las use. Cree el archivo
+  products.js donde cree un contructor para crear todos mis productos y tambien
+  cree las promesas de estos en el mismo archivo.
+</p>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<h2>VERSIONES</h2>
+<ul>
+  <li>v0.1: Empezando a usar React</li>
+  <li>v0.2: Creando componente Nav</li>
+  <li>v0.3: Agregando carrito y placeholder de los productos</li>
+  <li>v0.4: Agregando contador</li>
+  <li>v0.5: Agregando promesa</li>
+  <li>v0.6: Agregando detalle a un producto</li>
+  <li>v0.7: Agregrado routing y preparando para la primera entrega</li>
+</ul>

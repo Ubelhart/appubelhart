@@ -1,14 +1,14 @@
 import React from "react";
-import CartWidget from "../CartWidget/CartWidget";
+import { NavLink } from "react-router-dom";
+import CartWidget from "../CartWidget";
 
 const NavBar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
-        <CartWidget />
-        <a className="navbar-brand" href="/#">
-          E-Commerce
-        </a>
+        <NavLink className="navbar-brand" to="/">
+          MASTER
+        </NavLink>
         <button
           className="navbar-toggler"
           type="button"
@@ -24,19 +24,22 @@ const NavBar = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="/#">
-                Inicio
-              </a>
+              <NavLink className="nav-link" to="/category/Sweaters">
+                Sweaters
+              </NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/#">
-                Características
-              </a>
+              <NavLink className="nav-link" to="/category/Camperas">
+                Camperas
+              </NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/#">
-                Precios
-              </a>
+              <NavLink className="nav-link" to="/category/Calzados">
+                Calzados
+              </NavLink>
+            </li>
+            <li>
+              <CartWidget />
             </li>
           </ul>
         </div>
