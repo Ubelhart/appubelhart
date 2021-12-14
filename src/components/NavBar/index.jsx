@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { getCategories } from "../../services/categories";
 import CartWidget from "../CartWidget";
 
 const NavBar = () => {
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    getCategories().then((list) => {
+      setCategories(list);
+    });
+    return () => {
+      setCategories([]);
+    };
+  }, []);
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
@@ -23,21 +35,18 @@ const NavBar = () => {
 
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/category/Sweaters">
-                Sweaters
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/category/Camperas">
-                Camperas
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/category/Calzados">
-                Calzados
-              </NavLink>
-            </li>
+            {categories.map((category) => {
+              return (
+                <li key={category.idCategory} className="nav-item">
+                  <NavLink
+                    className="nav-link"
+                    to={`/category/${category.idCategory}`}
+                  >
+                    {category.name}
+                  </NavLink>
+                </li>
+              );
+            })}
             <li>
               <CartWidget />
             </li>

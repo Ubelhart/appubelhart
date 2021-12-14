@@ -33,16 +33,17 @@
   <li>v0.6: Agregando detalle a un producto</li>
   <li>v0.7: Agregrado routing y preparando para la primera entrega</li>
   <li>v0.71: Subiendo gifs al readme</li>
+  <li>v0.75: Mejoras varias</li>
 </ul>
 
 <h2>DEMOSTRACIÓN</h2>
 <ul>
   <li>Parte 1</li>
   <br />
-  <img src="./public/gif/sampleOne.gif" alt="" />
+  <img src="./gif/sampleOne.gif" alt="" />
   <br />
   <br />
   <li>Parte 2</li>
   <br />
-  <img src="./public/gif/sampleTwo.gif" alt="" />
+  <img src="./gif/sampleTwo.gif" alt="" />
 </ul>
