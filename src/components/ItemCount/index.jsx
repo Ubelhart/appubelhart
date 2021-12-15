@@ -1,10 +1,8 @@
 import "./style.scss";
 import React, { useState } from "react";
 
-const ItemCount = ({ item }) => {
+const ItemCount = ({ item, onAdd }) => {
   const [number, setNumber] = useState(1);
-
-  const onAdd = () => alert(item.title + " ha sido agregado al Carrito");
 
   const increment = () => {
     if (number < item.stock) {
@@ -30,7 +28,7 @@ const ItemCount = ({ item }) => {
         </button>
       </div>
       <p>Stock: {item.stock}</p>
-      <button className="btn btn-primary" onClick={onAdd}>
+      <button className="btn btn-primary" onClick={() => onAdd(number)}>
         Agregar al carrito
       </button>
     </div>

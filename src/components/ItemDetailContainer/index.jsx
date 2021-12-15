@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getProductById } from "../../services/products";
 import ItemDetail from "../ItemDetail";
-import ItemCount from "../ItemCount";
 import Loader from "../Loader";
 
 const ItemDetailContainer = () => {
@@ -27,7 +26,6 @@ const ItemDetailContainer = () => {
           <div className="items">
             <div className="item">
               <ItemDetail item={item} />
-              <ItemCount item={item} />
             </div>
           </div>
         </>

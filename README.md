@@ -34,6 +34,7 @@
   <li>v0.7: Agregrado routing y preparando para la primera entrega</li>
   <li>v0.71: Subiendo gifs al readme</li>
   <li>v0.75: Mejoras varias</li>
+  <li>v0.80: Eventos con React</li>
 </ul>
 
 <h2>DEMOSTRACIÓN</h2>
