@@ -7,6 +7,7 @@ import Loader from "../Loader";
 const ItemDetailContainer = () => {
   const { id } = useParams();
   const [item, setItem] = useState({});
+
   useEffect(() => {
     const product = getProductById(id);
     product.then((product) => {

@@ -1,8 +1,10 @@
 import "./style.scss";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import CartContext from "../../context/CartContext";
 
-const ItemCount = ({ item, onAdd }) => {
+const ItemCount = ({ item }) => {
   const [number, setNumber] = useState(1);
+  const { addItem } = useContext(CartContext);
 
   const increment = () => {
     if (number < item.stock) {
@@ -28,7 +30,7 @@ const ItemCount = ({ item, onAdd }) => {
         </button>
       </div>
       <p>Stock: {item.stock}</p>
-      <button className="btn btn-primary" onClick={() => onAdd(number)}>
+      <button className="btn btn-primary" onClick={() => addItem(item, number)}>
         Agregar al carrito
       </button>
     </div>

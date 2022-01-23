@@ -8,8 +8,8 @@ class Category {
 const categoriesMock = [];
 
 categoriesMock.push(new Category(1, "Sweaters"));
-categoriesMock.push(new Category(2, "Camperas"));
-categoriesMock.push(new Category(3, "Calzados"));
+categoriesMock.push(new Category(2, "Calzados"));
+categoriesMock.push(new Category(3, "Camperas"));
 
 export const getCategories = () => {
   return new Promise((resolve, reject) => {
