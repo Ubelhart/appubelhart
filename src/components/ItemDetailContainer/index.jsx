@@ -1,18 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getProductById } from "../../services/products";
 import ItemDetail from "../ItemDetail";
 import Loader from "../Loader";
+import { getDoc, doc } from "firebase/firestore";
+import { db } from "../../services/firebase";
 
 const ItemDetailContainer = () => {
   const { id } = useParams();
   const [item, setItem] = useState({});
 
   useEffect(() => {
-    const product = getProductById(id);
-    product.then((product) => {
-      setItem(product);
-    });
+    getDoc(doc(db, "products", id))
+      .then((querySnapshot) => {
+        const product = { id: querySnapshot.id, ...querySnapshot.data() };
+        setItem(product);
+      })
+      .catch((error) => {
+        console.log("Error searching product", error);
+      });
+
     return () => {
       setItem({});
     };

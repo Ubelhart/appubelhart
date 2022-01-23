@@ -1,15 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { getCategories } from "../../services/categories";
 import CartWidget from "../CartWidget";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../services/firebase";
 
 const NavBar = () => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    getCategories().then((list) => {
-      setCategories(list);
-    });
+    getDocs(collection(db, "categories"))
+      .then((querySnapshot) => {
+        const categories = querySnapshot.docs.map((doc) => {
+          return { id: doc.id, ...doc.data() };
+        });
+        setCategories(categories);
+      })
+      .catch((error) => {
+        console.log("Error searching categories", error);
+      });
     return () => {
       setCategories([]);
     };
@@ -37,11 +45,8 @@ const NavBar = () => {
           <ul className="navbar-nav">
             {categories.map((category) => {
               return (
-                <li key={category.idCategory} className="nav-item">
-                  <NavLink
-                    className="nav-link"
-                    to={`/category/${category.idCategory}`}
-                  >
+                <li key={category.id} className="nav-item">
+                  <NavLink className="nav-link" to={`/category/${category.id}`}>
                     {category.name}
                   </NavLink>
                 </li>

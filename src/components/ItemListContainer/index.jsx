@@ -1,27 +1,33 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getProductsByCategory, getProducts } from "../../services/products";
 import ItemList from "../ItemList";
 import Loader from "../Loader";
-import { getCategoryById } from "../../services/categories";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../services/firebase";
 
 const ItemListContainer = (props) => {
   const { categoryId } = useParams();
   const [products, setProducts] = useState([]);
-  const [category, setCategory] = useState([]);
+  const [category, setCategory] = useState({});
 
   useEffect(() => {
-    if (categoryId !== undefined) {
-      const list = getProductsByCategory(categoryId);
-      list.then((list) => {
-        setProducts(list);
+    getDocs(collection(db, "products"))
+      .then((querySnapshot) => {
+        const products = querySnapshot.docs.map((doc) => {
+          return { id: doc.id, ...doc.data() };
+        });
+        if (categoryId !== undefined) {
+          const productsByCategory = products.filter((prod) => {
+            return prod.category === categoryId;
+          });
+          setProducts(productsByCategory);
+        } else {
+          setProducts(products);
+        }
+      })
+      .catch((error) => {
+        console.log("Error searching products", error);
       });
-    } else {
-      const list = getProducts();
-      list.then((list) => {
-        setProducts(list);
-      });
-    }
 
     return () => {
       setProducts([]);
@@ -30,12 +36,20 @@ const ItemListContainer = (props) => {
 
   useEffect(() => {
     if (categoryId !== undefined) {
-      getCategoryById(categoryId).then((list) => {
-        setCategory(list);
-      });
+      getDocs(collection(db, "categories"))
+        .then((querySnapshot) => {
+          const categories = querySnapshot.docs.map((doc) => {
+            return { id: doc.id, ...doc.data() };
+          });
+          const category = categories.find((item) => categoryId === item.id);
+          setCategory(category);
+        })
+        .catch((error) => {
+          console.log("Error searching categories", error);
+        });
     }
     return () => {
-      setCategory([]);
+      setCategory({});
     };
   }, [categoryId]);
 
