@@ -29,22 +29,42 @@ const CartListContainer = () => {
       phone: phone,
       date: Timestamp.fromDate(new Date()),
     };
-    /*addDoc(collection(db, "orders"), objOrder).then(({ id }) => {
-      console.log(id); 
-    }); */
 
     const batch = writeBatch(db);
     const outOfStock = [];
 
     objOrder.items.forEach((prod) => {
-      getDoc(doc(db, "items"), prod.id).then((documentSnapshot) => {
-        if (documentSnapshot.data().stock >= prod.quantity) {
-          batch.update(doc(db, "items", documentSnapshot.id), {
-            stock: documentSnapshot.data().stock - prod.quantity,
-          });
-        }
-      });
+      getDoc(doc(db, "products", prod.id))
+        .then((documentSnapshot) => {
+          if (documentSnapshot.data().stock >= prod.quantity) {
+            batch.update(doc(db, "products", documentSnapshot.id), {
+              stock: documentSnapshot.data().stock - prod.quantity,
+            });
+          } else {
+            outOfStock.push({
+              id: documentSnapshot.id,
+              ...documentSnapshot.data(),
+            });
+          }
+        })
+        .catch((error) => {
+          console.log("Error updating product", error);
+        });
     });
+
+    if (outOfStock.length === 0) {
+      addDoc(collection(db, "orders"), objOrder)
+        .then(({ id }) => {
+          batch.commit().then(() => {
+            console.log(id);
+          });
+        })
+        .catch((error) => {
+          console.log("Error pushing new order", error);
+        });
+    }
+
+    clear();
   };
 
   useEffect(() => {
