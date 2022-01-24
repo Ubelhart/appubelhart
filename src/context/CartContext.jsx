@@ -23,6 +23,7 @@ export const CartContextProvider = ({ children }) => {
         },
       ]);
     }
+    countProducts();
   };
 
   const removeItem = (itemId) => {
