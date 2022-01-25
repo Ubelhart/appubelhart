@@ -3,12 +3,13 @@ import { useParams } from "react-router-dom";
 import ItemList from "../ItemList";
 import Loader from "../Loader";
 import { collection, getDocs } from "firebase/firestore";
-import { db } from "../../services/firebase";
+import { db } from "../../services/firebase/firebase";
 
 const ItemListContainer = (props) => {
   const { categoryId } = useParams();
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState({});
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getDocs(collection(db, "products"))
@@ -27,6 +28,9 @@ const ItemListContainer = (props) => {
       })
       .catch((error) => {
         console.log("Error searching products", error);
+      })
+      .finally(() => {
+        setLoading(false);
       });
 
     return () => {
@@ -46,6 +50,9 @@ const ItemListContainer = (props) => {
         })
         .catch((error) => {
           console.log("Error searching categories", error);
+        })
+        .finally(() => {
+          setLoading(false);
         });
     }
     return () => {
@@ -55,7 +62,7 @@ const ItemListContainer = (props) => {
 
   return (
     <>
-      {products.length === 0 ? (
+      {loading ? (
         <>
           <Loader />
         </>

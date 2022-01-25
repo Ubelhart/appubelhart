@@ -3,11 +3,12 @@ import { useParams } from "react-router-dom";
 import ItemDetail from "../ItemDetail";
 import Loader from "../Loader";
 import { getDoc, doc } from "firebase/firestore";
-import { db } from "../../services/firebase";
+import { db } from "../../services/firebase/firebase";
 
 const ItemDetailContainer = () => {
   const { id } = useParams();
   const [item, setItem] = useState({});
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getDoc(doc(db, "products", id))
@@ -17,6 +18,9 @@ const ItemDetailContainer = () => {
       })
       .catch((error) => {
         console.log("Error searching product", error);
+      })
+      .finally(() => {
+        setLoading(false);
       });
 
     return () => {
@@ -25,7 +29,7 @@ const ItemDetailContainer = () => {
   }, [id]);
   return (
     <>
-      {Object.keys(item).length === 0 ? (
+      {loading ? (
         <Loader />
       ) : (
         <>

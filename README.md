@@ -23,6 +23,9 @@
   cree las promesas de estos en el mismo archivo.
 </p>
 
+<h2>INSTALACIÓN</h2>
+<p>Para iniciar el proyecto clona el repositorio, una vez adentro de la carpeta principal, escribir npm init para instalar todo lo necesario. Despues tienes que usar tu propia base de datos en firebase. Tienes que crear un archivo .env y poner tus keys de tu base de datos de firebase, en .env.example puedes ver un ejemplo.</p>
+
 <h2>VERSIONES</h2>
 <ul>
   <li>v0.1: Empezando a usar React</li>
@@ -35,6 +38,11 @@
   <li>v0.71: Subiendo gifs al readme</li>
   <li>v0.75: Mejoras varias</li>
   <li>v0.80: Eventos con React</li>
+  <li>v0.90: Agregando condicionales</li>
+  <li>v1.0: Base de datos a Firebase</li>
+  <li>v1.05: Actualizando stock con firebase</li>
+  <li>v.1.1: Actualzando stock con firebase 2</li>
+  <li>v.1.15: Arreglos Varios</li>
 </ul>
 
 <h2>DEMOSTRACIÓN</h2>

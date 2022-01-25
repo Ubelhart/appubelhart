@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import CartList from "../CartList";
+import Form from "../Form";
 import CartContext from "../../context/CartContext";
 import { NavLink } from "react-router-dom";
-import { db } from "../../services/firebase";
+import { db } from "../../services/firebase/firebase";
 import {
   addDoc,
   collection,
@@ -15,6 +16,7 @@ import {
 const CartListContainer = () => {
   const { cart, removeItem, clear, countPrices } = useContext(CartContext);
   const [total, setTotal] = useState(0);
+  const [transactionId, setTransactionId] = useState();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
@@ -56,7 +58,7 @@ const CartListContainer = () => {
       addDoc(collection(db, "orders"), objOrder)
         .then(({ id }) => {
           batch.commit().then(() => {
-            console.log(id);
+            setTransactionId(id);
           });
         })
         .catch((error) => {
@@ -87,46 +89,30 @@ const CartListContainer = () => {
               total={total}
             />
           </div>
-          <form onSubmit={confirmOrder}>
-            <div>
-              <label htmlFor="name">Nombre</label>
-              <input
-                type="text"
-                id="name"
-                placeholder="Fulano Letal"
-                onChange={(e) => setName(e.target.value)}
-              />
-            </div>
-
-            <div>
-              <label htmlFor="email">E-mail</label>
-              <input
-                type="email"
-                id="email"
-                placeholder="fulanoletal@email.com"
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-
-            <div>
-              <label htmlFor="tel">Telefono</label>
-              <input
-                type="tel"
-                id="tel"
-                placeholder="341699632"
-                onChange={(e) => setPhone(e.target.value)}
-              />
-            </div>
-
-            <button className="btn btn-primary">Terminar Compra</button>
-          </form>
+          <Form
+            onSubmit={confirmOrder}
+            onChangeName={setName}
+            onChangeEmail={setEmail}
+            onChangePhone={setPhone}
+          />
         </>
       ) : (
         <>
-          <h2>No has agregado ningun producto</h2>
-          <NavLink to="/">
-            <button className="btn btn-danger">Volver al Landing</button>
-          </NavLink>
+          {transactionId ? (
+            <>
+              <h3>Su numero de transacción es: {transactionId}</h3>
+              <NavLink to="/">
+                <button className="btn btn-danger">Volver al Landing</button>
+              </NavLink>
+            </>
+          ) : (
+            <>
+              <h2>No has agregado ningun producto</h2>
+              <NavLink to="/">
+                <button className="btn btn-danger">Volver al Landing</button>
+              </NavLink>
+            </>
+          )}
         </>
       )}
     </>
