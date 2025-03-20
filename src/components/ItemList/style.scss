@@ -1,5 +1,6 @@
 .items {
   display: grid;
   justify-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   row-gap: 3em;
 }

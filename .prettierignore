@@ -1,0 +1,11 @@
+# Ignore artifacts:
+build
+coverage
+node_modules/*
+coverage/*
+public/*
+eslint.config.mjs
+prettier.config.mjs
+
+# Ignore all HTML files:
+**/*.html
